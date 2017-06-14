@@ -103,22 +103,34 @@ function draw() {
     drawPaddle();
     collisionDetection();
     
-    if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
+   if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
         dx = -dx;
     }
-    if(y + dy > canvas.height-ballRadius || y + dy < ballRadius) {
+    if(y + dy < ballRadius) {
         dy = -dy;
     }
-    
-    if(rightPressed && paddleX < canvas.width-paddleWidth) {
-        paddleX += 7;
+    else if(y + dy > canvas.height-ballRadius) {
+        if(x > paddleX && x < paddleX + paddleWidth) {
+			 if(y= y-paddleHeight){
+            dy = -dy  ;
+			 }
+        }
+        else {
+            alert("GAME OVER");
+            document.location.reload();
+        }
     }
-    else if(leftPressed && paddleX > 0) {
-        paddleX -= 7;
-    }
-    
-    x += dx;
-    y += dy;
-}
+	if(rightPressed && paddleX<canvas.width-paddleWidth){
+		
+		paddleX+=7;
+		}
+	 else if(leftPressed && paddleX>0 ){
+		 paddleX-=7;
+		 
+		 }
+		 
+		 x=x+dx;
+	     y=y+dy;
+	}
 
-setInterval(draw, 10);
+setInterval(draw,10);
