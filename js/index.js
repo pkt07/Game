@@ -142,7 +142,7 @@ function draw() {
           else {
             lives--;
             if(!lives) {
-                alert("Tuk TUk TUk");
+                alert("GAME OVER");
                 document.location.reload();
             }
             else {
